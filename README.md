@@ -11,7 +11,7 @@ changes made in first branch
 - 💞️ I’m looking to collaborate on developing project
 
 > changes made in first branch
-> it will not appear in the main before merge branch to the main.
+> It will not appear in the main before merge branch to the main.
 
 <!---
 yanyanzl/yanyanzl is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
