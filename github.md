@@ -13,7 +13,7 @@
 5. Connect by SSH connection: Generating a new SSH key: You can access and write data in repositories on GitHub.com using SSH (Secure Shell Protocol).When you connect via SSH, you authenticate using a private key file on your local machine.
      - On your local computer, open terminal, replacing the email used in the example with your GitHub email address. by:  ssh-keygen -t ed25519 -C "your_email@example.com". this will generate two files: /Users/YOU/.ssh/id_Ed25519 (this is a private key) and id_ed25519.pub (this is a public key)
      - Adding your SSH key to the ssh-agent. by this commond:  ssh-add --apple-use-keychain ~/.ssh/id_ed25519
-     - Add the SSH public key to your account on GitHub. For more information, see "Adding a new SSH key to your GitHub account."
+     - Add the SSH public key to your account on GitHub. For more information, see "Adding a new SSH key to your GitHub account.". by copying your public key by command: pbcopy < ~/.ssh/id_ed25519.pub and paste to Github
      - test your SSH connection: $ ssh -T git@github.com
      - Adding or changing a passphrase: You can change the passphrase for an existing private key without regenerating the keypair by typing the following command: ssh-keygen -p -f ~/.ssh/id_ed25519
 6. Connect by HTTPS: 
