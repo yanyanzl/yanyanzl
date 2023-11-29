@@ -114,6 +114,13 @@ that you don’t have yet. It’s important to note that the git fetch command o
 8. git remote rename xxx yyy: rename remote xxx to yyy
 9. git remote remove xxx : remove a remote all remote-tracking branches and configuration settings associated with that remote are also deleted
 
+### tagging
+1. git tag -a v0.1 -m "my first tag 0.1" : add a tag v0.1 with message. then you can show it with git tag or git show v0.1
+2. git tag -d v0.1 : delete tage v0.1
+
+### git alias
+1. git config --global alias.unstage 'reset HEAD --' : then you can use git unstage filename 
+
 ## cheat-sheet for git commands
 ### Configure tooling
 Configure user information for all local repositories
