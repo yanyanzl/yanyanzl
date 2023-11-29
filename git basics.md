@@ -7,6 +7,64 @@ desktop.github.com
 Git for All Platforms
 git-scm.com
 
+## step by step for beginner
+
+### Get Git via Git itself for updates:
+- git clone https://git.kernel.org/pub/scm/git/git.git
+
+### configuration for Git
+- Git comes with a tool called "git config" that lets you get and set configuration variables that control
+all aspects of how Git looks and operates. These variables can be stored in three different place
+- 1. [path]/etc/gitconfig file: Contains values applied to every user on the system and all their
+repositories. If you pass the option --system to git config.
+
+- 2. ~/.gitconfig or ~/.config/git/config file: Values specific personally to you, the user. You can
+make Git read and write to this file specifically by passing the --global option, and this affects
+all of the repositories you work with on your system.
+
+3. config file in the Git directory (that is, .git/config) of whatever repository you’re currently
+using: Specific to that single repository. You can force Git to read from and write to this file with
+the --local option, but that is in fact the default. Unsurprisingly, you need to be located
+somewhere in a Git repository for this option to work properly.
+
+- You can view all of your settings and where they are coming from using: git config --list --show-origin
+
+### you identity
+The first thing you should do when you install Git is to set your user name and email address. This
+is important because every Git commit uses this information, and it’s immutably baked into the
+commits you start creating: 
+- git config --global user.name "Steven"
+- git config --global user.email "example@gmail.com"
+
+### Editor
+- you can configure the default text editor that will be used when Git needs you to type in a message. could be "nano" (terminal based), Visual Studio Code (graphical) by "code --wait", or "emacs"
+- git config --global core.editor "code --wait"
+
+###  Your default branch name
+- By default Git will create a branch called master when you create a new repository with "git init"
+- To set main as the default branch name do: git config --global init.defaultBranch main
+
+### check your settings
+- git config --list --show-origin
+
+### getting help
+- git help <conmmand>
+- git command --help
+- git command -h (this is a more concise version with simple information)
+
+### Getting a Git Repository (one of two ways below)
+1. You can take a local directory that is currently not under version control, and turn it into a Git
+repository, If you have a project directory that is currently not under version control and you want to start
+controlling it with Git, you first need to go to that project’s directoryj. and then 
+  - cd /Users/user/my_project
+  - git init (you can reinitialise it if it was initialised before).
+  - This creates a new subdirectory named .git that contains all of your necessary repository files — a Git repository skeleton
+  - If you want to start version-controlling existing files (as opposed to an empty directory), you should probably begin tracking those files and do an initial commit. You can accomplish that with a few git add commands that specify the files you want to track, followed by a git commit: git add *.py or (git add --all) to add all files under the folder then git commit -m "Initial project version"
+3. You can clone an existing Git repository from elsewhere. Cloning an Existing Repository
+  - git clone https://github.com/libgit2/libgit2
+  - Git has a number of different transfer protocols you can use. The previous example uses the https://protocol, but you may also see git:// or user@server:path/to/repo.git , which uses the SSH transfer protoco
+
+
 ### Configure tooling
 Configure user information for all local repositories
 
