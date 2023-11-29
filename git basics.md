@@ -64,12 +64,55 @@ controlling it with Git, you first need to go to that project’s directoryj. an
   - git clone https://github.com/libgit2/libgit2
   - Git has a number of different transfer protocols you can use. The previous example uses the https://protocol, but you may also see git:// or user@server:path/to/repo.git , which uses the SSH transfer protoco
 
-### checking your status of your files
+### checking and change the status of your files
 - git status
-- untracked (not included in git yet) : by git add xxx to add it to git. then it's status changed to staged (included in git but not commited). This is a new file
+- git add file: untracked (not included in git yet) : by git add xxx to add it to git. then it's status changed to staged (included in git but not commited). This is a new file
+- git add --all or git add * : add all files
 - unmodified (commited files): edit those files will change their status to modified (commited before then edited but not staged). by git add xxx to add the edited version to staged (included in git but not commited yet)
 - If you modify a file after you run git add, you have to run git add again to stage the latest version of the file
+- git restore --staged filename or git reset HEAD filename: only change staged to modified.
+- git checkout filename or git restore filename: unmodifying a modified file. change the file from staged to be unmodified (unstage your change and your change will be lost). use it carefully
+- git diff: this command will show you the details of the changes made but not staged yet.
+- git diff --staged:  what you’ve staged that will go into your next commit, you can use
 
+### commiting your changes
+- git commit -m "message for your commit"
+- git commit -a -m "message for your commit": Adding the -a option to the git commit command makes Git automatically stage every file that is already tracked before doing the commit, letting you skip the git add part
+- Every time you perform a commit, you’re recording a snapshot of your project that you can revert to or compare to later
+- git commit --amend -m "new message for the last commit"
+
+### removing files
+- git rm filename then git commit
+- you may want to keep the file on your hard drive but not have Git track it anymore. This is particularly useful if you forgot to add something to your .gitignore: file and accidentally staged it. to do this. you add --cached option: git rm --cached filename
+- git rm \*~ : This command removes all files whose names end with a ~
+
+### rename a file
+- git mv file_from file_to
+
+### view the commiting history
+- git log 
+- git log -p -2 --shortstat --graph
+- git log --oneline
+- git log --pretty=short (or full)
+- git log -S function_name
+- git log --since=2.weeks
+- git log --pretty="%h - %s" --author='Junio C Hamano' --since="2008-10-01" \--before="2008-11-01" --no-merges -- t/
+
+### Ignoring files
+- Often, you’ll have a class of files that you don’t want Git to automatically add or even show you as being untracked. These are generally automatically generated files such as log files or files produced by your build system. In such cases, you can create a file listing patterns to match them named .gitignore
+- You may also include a log, tmp, or pid directory; automatically generated documentation; and so on. Setting up a .gitignore file for your new repository before you get going is generally a good idea so you don’t accidentally commit files that you really don’t want in your Git repository
+
+### working with remotes (collabrate with others. internet or local network or your own computer)
+1. git remote -v: show your remotes
+2. git remote add <shortname> <url> : Adding Remote Repositories. if you are in a new folder. use git init firstly.
+3. git fetch shortname: The command goes out to that remote project and pulls down all the data from that remote project
+that you don’t have yet. It’s important to note that the git fetch command only downloads the data to your local repository. it doesn’t automatically merge it with any of your work or modify what you’re currently working on. You have to merge it manually into your work when you’re ready.
+4. git pull <remote url> : fetches data from the server you originally cloned from and automatically tries to merge it into the code you’re currently working on. generally "git clone" = "git remote add xxx" + "git fetch xxx" + "git pull <url>"
+5. git branch --set-upstream-to=xxx/main : this set the tracking for local branch to remote.
+6. git config --global pull.rebase false : to config what to do when you pull from remote. false=merge. true=rebase
+
+
+## cheat-sheet for git commands
 ### Configure tooling
 Configure user information for all local repositories
 
