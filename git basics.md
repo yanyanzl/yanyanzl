@@ -60,10 +60,15 @@ controlling it with Git, you first need to go to that project’s directoryj. an
   - git init (you can reinitialise it if it was initialised before).
   - This creates a new subdirectory named .git that contains all of your necessary repository files — a Git repository skeleton
   - If you want to start version-controlling existing files (as opposed to an empty directory), you should probably begin tracking those files and do an initial commit. You can accomplish that with a few git add commands that specify the files you want to track, followed by a git commit: git add *.py or (git add --all) to add all files under the folder then git commit -m "Initial project version"
-3. You can clone an existing Git repository from elsewhere. Cloning an Existing Repository
+2. You can clone an existing Git repository from elsewhere. Cloning an Existing Repository
   - git clone https://github.com/libgit2/libgit2
   - Git has a number of different transfer protocols you can use. The previous example uses the https://protocol, but you may also see git:// or user@server:path/to/repo.git , which uses the SSH transfer protoco
 
+### checking your status of your files
+- git status
+- untracked (not included in git yet) : by git add xxx to add it to git. then it's status changed to staged (included in git but not commited). This is a new file
+- unmodified (commited files): edit those files will change their status to modified (commited before then edited but not staged). by git add xxx to add the edited version to staged (included in git but not commited yet)
+- If you modify a file after you run git add, you have to run git add again to stage the latest version of the file
 
 ### Configure tooling
 Configure user information for all local repositories
