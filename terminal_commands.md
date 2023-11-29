@@ -22,3 +22,6 @@
 10. pbcopy
 
 11. open
+
+12. vim : To save a file in Vim / vi, press Esc key, type :w and hit Enter key. 
+    One can save a file and quit vim / Vi by pressing Esc key, type :x and hit Enter key

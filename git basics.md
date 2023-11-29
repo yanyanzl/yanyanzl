@@ -107,7 +107,7 @@ controlling it with Git, you first need to go to that project’s directoryj. an
 2. git remote add <shortname> <url> : Adding Remote Repositories. if you are in a new folder. use git init firstly.
 3. git fetch shortname: The command goes out to that remote project and pulls down all the data from that remote project
 that you don’t have yet. It’s important to note that the git fetch command only downloads the data to your local repository. it doesn’t automatically merge it with any of your work or modify what you’re currently working on. You have to merge it manually into your work when you’re ready.
-4. git pull <remote url> : fetches data from the server you originally cloned from and automatically tries to merge it into the code you’re currently working on. generally "git clone" = "git remote add xxx" + "git fetch xxx" + "git pull <url>"
+4. git pull <remote url> : fetches data from the server you originally cloned from and automatically tries to merge it into the code you’re currently working on. generally "git clone" = "git remote add xxx" + "git fetch xxx" + "git pull <url>" + set tracking to remote
 5. git branch --set-upstream-to=xxx/main : this set the tracking for local branch to remote.
 6. git config --global pull.rebase false : to config what to do when you pull from remote. false=merge. true=rebase
 7. git remote show xxx : detail information about a remote
@@ -120,6 +120,36 @@ that you don’t have yet. It’s important to note that the git fetch command o
 
 ### git alias
 1. git config --global alias.unstage 'reset HEAD --' : then you can use git unstage filename 
+
+
+## advanced functions
+
+### Branching
+- Because a branch in Git is actually a simple file that contains the 40 
+- character SHA-1 checksum ofthe commit it points to, branches are cheap 
+- to create and destroy. Creating a new branch is as quick and simple as 
+- writing 41 bytes to a file (40 characters and a newline)
+
+1. git branch testing or git switch -c testing: 
+    - creating a new branch. it's a new pointer to a specific commit snapshot
+    - your working branch is not swithced to the new branch yet. 
+    - git log --oneline --decorate : will show you current working branch
+    - HEAD point to the current working branch
+2. git checkout testing or git switch testing:
+    - switch to branch 'testing'. the HEAD now point to testing
+    - if you make new commits here. then the main branch won't know it.
+    - git log only show commit history below the branch you checked out. you can use "git log branchname"
+    - Switching branches changes files in your working directory
+    - you can switch back and forth between the branches and merge them together when you’re ready
+    - git log --oneline --decorate --graph --all : showing where your branch pointers areand how your history has diverged
+3. git checkout main and then git merge testing:
+    - merge the testing branch back to your main branch
+    - after the merge, you can delete the branch testing by
+4. git branch -d testing :
+    - delete the branch testing
+    - git branch --all (show all branches)
+    - git branch --no-merged
+    - git branch --merged
 
 ## cheat-sheet for git commands
 ### Configure tooling
