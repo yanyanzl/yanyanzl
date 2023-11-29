@@ -108,6 +108,8 @@ controlling it with Git, you first need to go to that project’s directoryj. an
 3. git fetch shortname: The command goes out to that remote project and pulls down all the data from that remote project
 that you don’t have yet. It’s important to note that the git fetch command only downloads the data to your local repository. it doesn’t automatically merge it with any of your work or modify what you’re currently working on. You have to merge it manually into your work when you’re ready.
 4. git pull <remote url> : fetches data from the server you originally cloned from and automatically tries to merge it into the code you’re currently working on. generally "git clone" = "git remote add xxx" + "git fetch xxx" + "git pull <url>"
+5. git branch --set-upstream-to=xxx/main : this set the tracking for local branch to remote.
+6. git config --global pull.rebase false : to config what to do when you pull from remote. false=merge. true=rebase
 
 
 ## cheat-sheet for git commands
