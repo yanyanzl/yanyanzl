@@ -110,7 +110,9 @@ that you don’t have yet. It’s important to note that the git fetch command o
 4. git pull <remote url> : fetches data from the server you originally cloned from and automatically tries to merge it into the code you’re currently working on. generally "git clone" = "git remote add xxx" + "git fetch xxx" + "git pull <url>"
 5. git branch --set-upstream-to=xxx/main : this set the tracking for local branch to remote.
 6. git config --global pull.rebase false : to config what to do when you pull from remote. false=merge. true=rebase
-
+7. git remote show xxx : detail information about a remote
+8. git remote rename xxx yyy: rename remote xxx to yyy
+9. git remote remove xxx : remove a remote all remote-tracking branches and configuration settings associated with that remote are also deleted
 
 ## cheat-sheet for git commands
 ### Configure tooling
