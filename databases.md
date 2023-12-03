@@ -26,6 +26,8 @@
 
 - Some of the noticeable use cases of this Python database include heavily transactional applications like banking systems, ecommerce marketplaces, IoT platforms, and geospatial and analytics applications.
 
+- In addition to being free and open source, PostgreSQL is highly extensible. For example, you can define your own data types, build out custom functions, even write code from different programming languages without recompiling your database!
+
 ## 4) MongoDB
 - MongoDB is the most popular document-oriented NoSQL database used with Python web and analytical workloads. It uses JSON-like documents to store data and makes it easy to represent hierarchical relationships.
 
