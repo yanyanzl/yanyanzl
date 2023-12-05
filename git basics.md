@@ -151,6 +151,15 @@ that you don’t have yet. It’s important to note that the git fetch command o
     - git branch --no-merged
     - git branch --merged
 
+### How to delete or change directory of a cloned git repository on a local computer
+- Just move it. move "C:\Documents and Setings\$USER\project" C:\project or 
+- just drag the folder in explorer. 
+- Git won't care where it is - all the metadata for the repository is 
+- inside a folder called .git inside your project folder.
+- You can just delete that directory that you cloned the repo into, and re-clone it wherever you'd like.
+
+
+
 ## cheat-sheet for git commands
 ### Configure tooling
 Configure user information for all local repositories
