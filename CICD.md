@@ -21,3 +21,22 @@
 - continuous monitoring
 - of software applications throughout its development life cycle. 
 - The CI/CD practice, or CI/CD pipeline, forms the backbone of modern day DevOps operations.
+
+## CI/CD platform Jenkins
+
+### jenkins LTS long-term-support version
+### jenkins weekly: weekly released version
+
+- Jenkins is an extensible automation server with more than 1800 plugins 
+- providing integrations for hundreds of tools and services. 
+- support building, deploying and automating any project
+
+### 1. installation :
+```sh
+Install the latest LTS version: brew install jenkins-lts
+Start the Jenkins service: brew services start jenkins-lts
+Restart the Jenkins service: brew services restart jenkins-lts
+Update the Jenkins version: brew upgrade jenkins-lts
+
+```
+
