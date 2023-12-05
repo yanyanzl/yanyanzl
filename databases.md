@@ -41,3 +41,62 @@
 
 ### step 2: open pgAdmin 4 application and add the current computer user to PostgreSQL
  - pgAdmin administration and development platform for PostgreSQL
+ - add server. name = myserver, host: localhost, port 5432. 
+ - with pgAdmin4, you have to create a user called postgres in order to be able to connect with and log in to pgAdmin4
+ - Template databases will not show in the pgAdmin. don't use those databases.
+ - In case you created your database as template CREATE DATABASE ... IS_TEMPLATE =true, then the database is considered as "system object" and is not shown in the list if PgAdmin4 option "Show system objects?" is set to false.
+ 
+ 
+### step 3: create database on pgAdmin 4 or psql create mydb.
+
+### step 4: connect to a PostgreSQL server with Python
+
+- please first install the psycopg2 library:
+- pip install psycopg2
+	
+1. Django
+```sh
+In your settings.py, add an entry to your DATABASES setting:
+
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "[YOUR_DATABASE_NAME]",
+        "USER": "[YOUR_USER_NAME]",
+        "PASSWORD": "",
+        "HOST": "localhost",
+        "PORT": "",
+    }
+}
+```
+		
+2. Flask
+- When using the Flask-SQLAlchemy extension you can add to your application code:
+
+```sh
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/[YOUR_DATABASE_NAME]'
+db = SQLAlchemy(app)
+```
+
+3. SQLAlchemy
+```sh
+from sqlalchemy import create_engine
+engine = create_engine('postgresql://localhost/[YOUR_DATABASE_NAME]')
+```
+
+
+### command for psql
+1. psql database : enter the specific database
+    - then \dt will list all tables
+2. psql -U username : enter as a specific user
+    - then you can operate as this use. 
+    - \list : list all databases
+    - Grant all privileges on database dbname to username 
+    - create database dbname
+
+
+
