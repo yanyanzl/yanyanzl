@@ -26,4 +26,10 @@
 
 ### To see if a specific package is installed in an environment, in your terminal window or an Anaconda Prompt, run:
 
-conda list -n myenv scipy
+- conda list -n myenv scipy
+
+
+### creat new virtural enviorenment for the new project
+- conda create -n financial-analysis
+- conda activate financial-analysis
+- conda install -c conda-forge numpy scipy pandas matplotlib sympy cython spyder-kernels requests multitasking lxml tqdm
