@@ -100,3 +100,47 @@ engine = create_engine('postgresql://localhost/[YOUR_DATABASE_NAME]')
 
 
 
+## SQL
+
+### SQL which stands for Structured Query Language which is used to communicate with the database. It provides a path through which we can access the database without going through complicated procedures. All the operations you can do follows the CRUD acronym.
+
+### most common SQL commands
+1. Create a Table : CREATE TABLE table_name(column1 datatype, column2 datatype, … columnN datatype);
+    - Example: CREATE TABLE Employee (EMP_ID int, NAME varchar (255), SALARY int,  AGE int);
+2. Select Query : The SELECT Statement in SQL is used for viewing all records from a table
+    - SELECT column1, column2, columnN FROM table_name;
+    - example 1: SELECT EMP_ID, NAME, AGE FROM Employee;  
+    - example 2 all: SELECT * FROM table_name;
+
+3. Insert Query : insert records into a table. The INSERT INTO declaration is used to insert new records in a table. 
+    - INSERT INTO table_name (column1, column2, … columnN) VALUES (value1, value2, … valueN);
+    - example : INSERT INTO employee (EMP_ID, NAME, SALARY, AGE) VALUES ('1', 'Rajesh', 25000, 30);
+
+4. Delete Records From a Table : delete some selected records from a table. 
+    - DELETE FROM employee WHERE [condition];
+    - example : delete from polls_question where id = 3
+    
+5. Update Data in Records From a Table : update/modify the data in the existing records from a table. 
+    - UPDATE table_name SET column1 = value1, column2 = value2, … WHERE [condition];
+    - example : update polls_question set question_text = 'how is the wheather today?' where id = 2
+
+    
+6. Viewing Only Selected Records From a Table
+    - SELECT COUNT (1) FROM table_name;
+        - example : 
+    - SELECT * FROM table_name WHERE [condition];
+        - example : select * from polls_question where question_text like 'how is the wheather today?';
+        - example 2: select * from polls_question where question_text like 'How % you?';
+        - example 3: select pub_date, question_text from polls_question where id = '1' and pub_date = '2023-12-05 23:23:16+00';
+
+
+7. EXPLAIN select pub_date, question_text from polls_question where id = '1' and pub_date = '2023-12-05 23:23:16+00';
+
+### Foreign key
+- A foreign key is a column or columns in a database that (e.g. table_1.column_a) that are linked to a column in a different table (table_2.column_b).
+
+- The existence of a foreign key column establishes a foreign key constraint – a database rule that ensures that a value can be added or updated in column_a only if the same value already exists in column_b    
+    
+    
+    
+

@@ -1,9 +1,27 @@
 # commands used in the terminal
+
+
 ## basic commands used daily 
 
 1. cat
 
 2. ls
+    - view the current permissions of a file or directory? : ls -l
+    - To see all the permissions that a particular directory or file has. : ls -l file
+        - -rw-r--r--  1 root  wheel   1.9K 12 Oct 12:10 ssh_config
+        - Field Explanation
+            – normal file
+            d : directory
+            s : socket file
+            l : link file
+            Field 1 – File Permissions: Next characters specifyes the files permission. Every 3 characters specify read, write, execute permissions for user(root), group and others respectively in order. Taking the above example, -rw-rw-r– indicates read-write permission for user(root), read permission for group, and no permission for others respectively. If all three permissions are given to user(root), group and others, the format looks like -rwxrwxrwx
+            Field 2 – Number of links: Second field specifies the number of links for that file. In this example, 1 indicates only one link to this file.
+            Field 3 – Owner: Third field specifies owner of the file. In this example, this file is owned by username ‘maverick’.
+            Field 4 – Group: Fourth field specifies the group of the file. In this example, this file belongs to” maverick’ group.
+            Field 5 – Size: Fifth field specifies the size of file in bytes. In this example, ‘1176’ indicates the file size in bytes.
+            Field 6 – Last modified date and time: Sixth field specifies the date and time of the last modification of the file. In this example, ‘Feb 16 00:19’ specifies the last modification time of the file.
+            Field 7 – File name: The last field is the name of the file. In this example, the file name is 1.c.
+
 
 3. cd,  cd.., cd+space, 
 
@@ -97,6 +115,43 @@ Enter “Y” to save the modified buffer.
 - Using at with Files of Commands. You can use the -f (file) option in the following way to pass a filename to at: at now + 5 minutes < clean.txt
 - atq to show the queue of task list.
 - atrm to remove one task.
+
+20.  chmod command is used to change the access mode of a file. The name is an abbreviation of change mode.
+- Which states that every file and directory has a set of permissions that control the permissions like who can read, write or execute the file. In this the permissions have three categories: read, write, and execute simultaneously represented by `r`, `w` and `x`
+- chmod [options] [mode] [File_name] 
+    - Options: 
+        - `-R`	Apply the permission change recursively to all the files and directories within the specified directory.
+        - `-v`	It will display a message for each file that is processed. while indicating the permission change that was made.
+        - `-c`	It works same as `-v` but in this case it only displays messages for files whose permission is changed.
+        - `-f`	It helps in avoiding display of error messages.
+        - `-h`	Change the permissions of symbolic links instead of the files they point to.
+    - mode:
+        - The “mode” helps in setting new permissions that have to be applied to files or directories.
+        - `+`	Add permissions
+        - `-`	Remove permissions
+        - `=`	Set the permissions to the specified values
+        - `r`	Read permission
+        - `w`	Write permission
+        - `x`	Execute permission
+        - u	Owner
+        - g	Group
+        - o	Others
+        - a	All (owner,groups,others)
+    - example: 
+        - Read, write and execute permissions to the file owner: chmod u+rwx [file_name]
+        - 
+    - Octal mode : It is also a method for specifying permissions. In this method we specify permission using three-digit number. Where..
+        -  First digit specify the permission for Owner.
+        - Second digit specify the permission for Group. 
+        - Third digit specify the permission for Others. 
+            - Value	Permission
+            - 4	Read Permission
+            - 2	Write Permission
+            - 1	Execute Permission
+        - example : chmod 674 [file_name]
+            - 6 represent permission of file Owner which are (rw).
+            - 7 represent permission of Group which are (rwx).
+            - 4 represent permission of Other which is (r).
 
 ## glossory
 
