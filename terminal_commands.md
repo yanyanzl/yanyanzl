@@ -153,6 +153,10 @@ Enter “Y” to save the modified buffer.
             - 7 represent permission of Group which are (rwx).
             - 4 represent permission of Other which is (r).
 
+21. super user. 
+    - sudo command : the best way to execute command with super user do. 
+    - su - then enter you will enter super user mode. till the end of the session.
+
 ## glossory
 
 ### Files
