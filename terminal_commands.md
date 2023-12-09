@@ -71,9 +71,12 @@ stderr: The standard error pipe is where error messages are sent. By default, er
 
 15. export : this command list all enviorenment parameters set on the system
  - export PATH="/Library/PostgreSQL/16/bin:$PATH" : this command add postgreSQL to PATH
+ - export PATH="/Users/yanyanzhou/.wdm/drivers/chromedriver/mac64/120.0.6099.71/chromedriver-mac-x64:$PATH"
  - export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
  - export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin /Users/yanyanzhou/miniconda3/envs/ai/bin /Users/yanyanzhou/miniconda3/condabin /usr/local/bin /System/Cryptexes/App/usr/bin /usr/bin /bin /usr/sbin /sbin /Library/Apple/usr/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:$PATH"
- 
+
+
+driver = webdriver.Chrome(service=webdriver.chrome.service.Service(executable_path="/Users/yanyanzhou/.wdm/drivers/chromedriver/mac64/120.0.6099.71/chromedriver-mac-x64")) 
  
 16. curl: curl is a command-line tool to transfer data to or from a server, using any of the supported protocols (HTTP, FTP, IMAP, POP3, SCP, SFTP, SMTP, TFTP, TELNET, LDAP, or FILE). curl is powered by Libcurl. This tool is preferred for automation since it is designed to work without user interaction. curl can transfer multiple files at once. 
 - curl https://www.geeksforgeeks.org (This should display the content of the URL on the terminal.)
