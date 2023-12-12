@@ -159,6 +159,24 @@ Enter “Y” to save the modified buffer.
 21. super user. 
     - sudo command : the best way to execute command with super user do. 
     - su - then enter you will enter super user mode. till the end of the session.
+    
+    
+22. Hidden Files and Directories: Simplifying the User Experience
+- To simplify the experience for users, the Finder, and some specific user-facing interfaces (such as the Open and Save panels), hide many files and directories that the user should never have to use. Many of the hidden items are system- or app-specific resources that users cannot (or should not) access directly. Among the files and directories that are hidden are the following:
+
+    - Dot directories and files. Any file or directory whose name starts with a period (.) character is hidden automatically. This convention is taken from UNIX, which used it to hide system scripts and other special types of files and directories. Two special directories in this category are the . and .. directories, which are references to the current and parent directories respectively.
+
+    - UNIX-specific directories. The directories in this category are inherited from traditional UNIX installations. They are an important part of the system’s BSD layer but are more useful to software developers than end users. Some of the more important directories that are hidden include:
+        - /bin—Contains essential command-line binaries. Typically, you execute these binaries from command-line scripts.
+        - /dev—Contains essential device files, such as mount points for attached hardware.
+        - /etc—Contains host-specific configuration files.
+        - /sbin—Contains essential system binaries.
+        - /tmp—Contains temporary files created by apps and the system.
+        - /usr—Contains non-essential command-line binaries, libraries, header files, and other data.
+        - /var—Contains log files and other files whose content is variable. (Log files are typically viewed using the Console app.)
+    - Explicitly hidden files and directories. The Finder may hide specific files or directories that should not be accessed directly by the user. The most notable example of this is the /Volumes directory, which contains a subdirectory for each mounted disk in the local file system from the command line. (The Finder provides a different user interface for accessing local disks.) In macOS 10.7 and later, the Finder also hides the ~/Library directory—that is, the Library directory located in the user’s home directory.
+    - Packages and bundles. Packages and bundles are directories that the Finder presents to the user as if they were files. Bundles hide the internal workings of executables such as apps and just present a single entity that can be moved around the file system easily. Similarly, packages allow apps to implement complex document formats consisting of multiple individual files while still presenting what appears to be a single document to the user
+
 
 ## glossory
 
