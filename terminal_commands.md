@@ -178,6 +178,48 @@ Enter “Y” to save the modified buffer.
     - Packages and bundles. Packages and bundles are directories that the Finder presents to the user as if they were files. Bundles hide the internal workings of executables such as apps and just present a single entity that can be moved around the file system easily. Similarly, packages allow apps to implement complex document formats consisting of multiple individual files while still presenting what appears to be a single document to the user
 
 
+22. lsof : lsof is a command meaning "list open files",
+    - lsof (list all opened files)
+    - lsof -i :8080
+    - lsof -i TCP
+    - lsof -i TCP:21128
+    - lsof -i UDP
+    - list Unix Sockets by using lsof -U
+    - lsof -u username : list all the opened files by username
+    - lsof -u ^username : list all the opened files except those by username
+    - lsof -c Mysql : List all open files by a particular Process
+    - lsof -p process ID : 
+    - lsof -i : Files opened by network connections: Our Pc/system can be connected through various networks which helps in a variety of purpose. As we know that in Linux everything is a file, so we can even check the files that are opened by some network connections in the system. 
+    
+23. top -o mem : list top opened processes sort by mem
+    - top -o cpu/time/th/state : sort by cpu/time/thread/state
+    
+
+24. ps: ps for viewing information related with the processes on a system which stands as abbreviation for “Process Status”. ps command is used to list the currently running processes and their PIDs along with some other information depends on different options. It reads the process information from the virtual files in /proc file-system. /proc contains virtual files, this is the reason it’s referred as a virtual file system. 
+    - ps : Shows the processes for the current shell
+        - PID – the unique process ID 
+        - TTY – terminal type that the user is logged into 
+        - TIME – amount of CPU in minutes and seconds that the process has been running 
+        - CMD – name of the command that launched the process. 
+        
+    - ps -a : View all processes except both session leaders and processes not associated with a terminal
+    - ps -T : View all processes associated with this terminal 
+    - ps -r : View all the running processes
+    - ps -p process_id : view process id. example ps -p 1 9 1001
+    - ps -s session_id : View all the processes belongs to any session ID. 
+    
+25. Grep is a useful command to search for matching patterns in a file. grep is short for "global regular expression print"
+    - grep -i "UNix" geekfile.txt : Case insensitive search : The -i option enables to search for a string case insensitively in the given file
+    - grep -c "unix" test1.txt : Displaying the count of number of matches : 
+    - grep -l "test" * : Display the file names that matches the pattern.  just display the files that contains the given string/pattern. 
+    - grep -n "unix" geekfile.txt : Show line number while displaying the output using grep -n 
+    - grep -v "unix" geekfile.txt Inverting the pattern match : You can display the lines that are not matched with the specified search string pattern using the -v option. 
+    - grep "^unix" geekfile.txt : Matching the lines that start with a string : The ^ regular expression pattern specifies the start of a line. This can be used in grep to match the lines which start with the given string or pattern. 
+    - grep "unix$" geekfile.txt: matching the lines end with the string
+    - grep -iR test * : Search recursively for a pattern in the directory: -R prints the searched pattern in the given directory recursively in all the files.
+
+26. display all the users: dscl . list /Users 
+
 ## glossory
 
 ### Files

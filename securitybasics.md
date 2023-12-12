@@ -53,6 +53,15 @@
 - To disconnect from the server and close the SSH connection, simply type "exit" and press the Enter key
 
 
+### SSH tunneling
+- SSH tunneling enables more interesting types of use cases. The three types of SSH tunnels are as follows:
+
+- Local port forwarding enables connecting from your local host -- running the SSH client -- to a destination server via the SSH server. This approach is used when the destination server is not accessible to the local host -- for example, due to firewall filtering -- but it is accessible to the SSH server. Local port forwarding is one method of bypassing a firewall from inside a private network to access a particular server that would otherwise be blocked by the firewall.
+- Remote port forwarding, or reverse SSH tunneling, is a method for connecting to a destination server from an SSH server, via the SSH client. Less commonly used, remote port forwarding is one method to access an internal server from an outside private network that is otherwise inaccessible from the public internet. This method is used by hackers to exploit systems on private networks.
+- Dynamic port forwarding causes all inbound and outbound networking traffic to be routed through SSH on a specified port. This enables SSH connections between any two hosts, with all connections forwarded by the SSH client via an SSH server. It is also the mechanism for setting up a SOCKS proxy server, which passes networking traffic to be encapsulated in an SSH tunnel when the local client software is configured to pass all traffic to the specified port. Dynamic port forwarding can also be used to entirely circumvent the network firewall and gain access to any destination server from inside a private network.
+
+
+
 ### OpenSSL
 
 1. OpenSSL is a software library for applications that provide secure communications over computer networks against eavesdropping, and identify the party at the other end. It is widely used by Internet servers, including the majority of HTTPS websites.
