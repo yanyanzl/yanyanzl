@@ -220,6 +220,11 @@ Enter “Y” to save the modified buffer.
 
 26. display all the users: dscl . list /Users 
 
+27. source ~/.bash_profile : reload .bash_profile to the system environment
+    - The most common practice to hide passwords and secret keys is to use environmental variables. Generally, you have to set a variable in bash e.g. export EMAIL_HOST_PASSWORD=my-own-password and then you can use os python module to retrieve it:
+        - import os
+        - EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+
 ## glossory
 
 ### Files

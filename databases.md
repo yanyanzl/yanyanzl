@@ -41,3 +41,63 @@
 
 ### step 2: open pgAdmin 4 application and add the current computer user to PostgreSQL
  - pgAdmin is an administration and development platform for PostgreSQL
+
+
+
+### common sql command:
+    ``` SQL
+    - CREATE USER myuser WITH PASSWORD 'secret_passwd';
+        - This new user does not have any permissions other than the default permissions available to the public role
+        - When a new database is created, PostgreSQL by default creates a schema named public and grants access on this schema to a backend role named public
+        - Because of this, when a user tries to create a new table without specifying the schema name, the table gets created in the public schema. As mentioned earlier, by default, all users have access to create objects in the public schema, and therefore the table is created successfully.
+        
+        
+    - ALTER TABLE table_name RENAME COLUMN column_name TO new_column_name;
+    
+    - insert into aiinvest_assetdata (asset_name,asset_data_date,asset_close_price,asset_open_price,asset_high_price,asset_low_price,asset_volume,asset_id) values ('tsla', '2023-12-14 00:00:00','239.2899932861328','239.2899932861328','239.2899932861328','239.2899932861328',160569000,1) ON CONFLICT DO NOTHING
+    
+    - insert into aiinvest_assetdata (asset_name,asset_data_date,asset_close_price,asset_open_price,asset_high_price,asset_low_price,asset_volume,asset_id) 
+select 'tsla', '2023-12-13 00:00:00','239.2899932861328','239.2899932861328','239.2899932861328','239.2899932861328',160569000,1 
+WHERE NOT EXISTS (
+        SELECT id FROM aiinvest_assetdata WHERE asset_data_date = '2023-12-14 00:00:00'
+    );
+    
+    - SELECT EXISTS (
+   SELECT FROM information_schema.tables 
+   WHERE  table_schema = 'public'
+   AND    table_name   = 'aiinvest_assetdata'
+   );
+   
+   - SELECT column_name FROM information_schema.columns
+        WHERE table_name = 'aiinvest_assetdata'
+        
+    - select * from aiinvest_assetdata
+    
+    - delete from aiinvest_assetdata
+    
+    - DROP TABLE author;
+    ```
+
+
+
+### Enable postgreSQL to accept connection from other lan  computers
+    - First, edit the postgresql.conf file, and set listen_addresses. The default value of 'localhost' will only listen on the loopback adaptor. 
+        - You can change it to '*', meaning listen on all addresses, or specifically list the IP address of the interfaces you want it to accept connections from. 
+        - Note that this is the IP address of the postgreSQL server ip address. which the interface has allocated to it. 
+    - You must restart postgresql for the changes to listen_addresses to take effect.
+    - Next, in pg_hba.conf, you will need an entry like this:
+        - # TYPE  DATABASE        USER            ADDRESS                 METHOD
+        - host    {dbname}        {user}          192.168.1.0/24          md5
+            - {dbname} is the database name you are allowing access to. You can put "all" for all databases.
+            - {user} is the user who is allowed to connect. Note that this is the postgresql user, not necessarily the unix user.
+            - The ADDRESS part is the network address and mask that you want to allow. The mask I specified will work for 192.168.1.x as you requested.
+            - The METHOD part is the authentication method to use. There are a number of options there. md5 means it will use an md5 hashed password. 'trust' which you had in your sample means no authentication at all - this is definitely not recommended.
+    - pg_ctl reload -D /Users/yanyanzhou/Library/Application\ Support/Postgres/var-16
+
+
+    - https://aws.amazon.com/blogs/database/managing-postgresql-users-and-roles/#:~:text=Users%2C%20groups%2C%20and%20roles%20are,for%20the%20CREATE%20ROLE%20statement.
+
+
+
+
+    
