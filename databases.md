@@ -42,14 +42,67 @@
 ### step 2: open pgAdmin 4 application and add the current computer user to PostgreSQL
  - pgAdmin is an administration and development platform for PostgreSQL
 
+### step 3: manage the users and databases:
+    
+    - where is the Directory for the data: 
+        - SHOW data_directory;
+        - select setting from pg_settings where name = 'data_directory';
+    - where is the directory for the postgreSQL application:
+        - which psql
+    
 
+    - in terminal: use command: psql or psql database_name to enter postgresql database mode.
+    - SELECT * FROM pg_user;
+    - SELECT * FROM pg_roles;
+    - \du : list all users/roles
+    - \dt : list all tables
+    - \l : list all database 
+    - \n : list all schema
+    - \conninfo : current connection information : equal to sql: select current_user;
+    - \c new_database_name : change to the new database;
+    - \c current_db new_user_name : change to new user;
+    - \c new_db_name new_user_name : change to new db and new user;
+    - \password username   : change the password for username;
+    
+    - Create User:
+        - CREATE USER myuser WITH PASSWORD 'secret_passwd';
+            - This new user does not have any permissions other than the default permissions available to the public role
+            - When a new database is created, PostgreSQL by default creates a schema named public and grants access on this schema to a backend role named public
+            - Because of this, when a user tries to create a new table without specifying the schema name, the table gets created in the public schema. 
+            - As mentioned earlier, by default, all users have access to create objects in the public schema, and therefore the table is created successfully.
 
+    - Revoke permissions on public schema
+        - To fix this, you should revoke the default create permission on the public schema from the public role using the following SQL statement:
+        - REVOKE CREATE ON SCHEMA public FROM PUBLIC;
+        - REVOKE ALL ON DATABASE mydatabase FROM PUBLIC;
+            - This makes sure that users can’t connect to the database by default unless this permission is explicitly granted.
+        
+    - Read-only role
+        - CREATE ROLE readonly;  this will create a role readonly
+        - GRANT CONNECT ON DATABASE mydatabase TO readonly;   this give the connect right to readonly
+        - GRANT USAGE ON SCHEMA myschema TO readonly;    this give the use of the schema to readonly
+        - GRANT SELECT ON TABLE mytable1, mytable2 TO readonly;      this give the select right to readponly to tables
+        - or GRANT SELECT ON ALL TABLES IN SCHEMA myschema TO readonly;
+        - The preceding SQL statement grants SELECT access to the readonly role on all the existing tables and views in the schema myschema. Note that any new tables that get added in the future will not be accessible by the readonly user. To help ensure that new tables and views are also accessible, run the following statement to grant permissions automatically:
+        - ALTER DEFAULT PRIVILEGES IN SCHEMA myschema GRANT SELECT ON TABLES TO readonly;
+        - GRANT readonly TO myuser1;   this will grant the readonly role permission to myuser1
+        - REVOKE readwrite FROM myuser1;  this will remove the readwrite role permission from myuser;
+        
+    - Read/write role
+        - -- Read/write role
+        - CREATE ROLE readwrite;
+        - GRANT CONNECT ON DATABASE mydatabase TO readwrite;
+        - GRANT USAGE, CREATE ON SCHEMA myschema TO readwrite;
+        - GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA myschema TO readwrite;
+        - ALTER DEFAULT PRIVILEGES IN SCHEMA myschema GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO readwrite;
+        - GRANT USAGE ON ALL SEQUENCES IN SCHEMA myschema TO readwrite;
+        - ALTER DEFAULT PRIVILEGES IN SCHEMA myschema GRANT USAGE ON SEQUENCES TO readwrite;
+
+    
+    
+    
 ### common sql command:
     ``` SQL
-    - CREATE USER myuser WITH PASSWORD 'secret_passwd';
-        - This new user does not have any permissions other than the default permissions available to the public role
-        - When a new database is created, PostgreSQL by default creates a schema named public and grants access on this schema to a backend role named public
-        - Because of this, when a user tries to create a new table without specifying the schema name, the table gets created in the public schema. As mentioned earlier, by default, all users have access to create objects in the public schema, and therefore the table is created successfully.
         
         
     - ALTER TABLE table_name RENAME COLUMN column_name TO new_column_name;

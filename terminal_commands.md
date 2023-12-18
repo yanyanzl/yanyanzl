@@ -224,7 +224,28 @@ Enter “Y” to save the modified buffer.
     - The most common practice to hide passwords and secret keys is to use environmental variables. Generally, you have to set a variable in bash e.g. export EMAIL_HOST_PASSWORD=my-own-password and then you can use os python module to retrieve it:
         - import os
         - EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
-
+28. env: list all the enviorenment parameters
+    - export – The command sets environment variables.
+    - unset – The command deletes shell and environment variables.
+    - set – The command sets or unsets shell variables. When used without an argument it will print a list of all variables including environment and shell variables, and shell functions.
+    - printenv – The command prints all or the specified environment variables.
+        - USER - The current logged in user.
+        - HOME - The home directory of the current user.
+        - EDITOR - The default file editor to be used. This is the editor that will be used when you type edit in your terminal.
+        - SHELL - The path of the current user’s shell, such as bash or zsh.
+        - LOGNAME - The name of the current user.
+        - PATH - A list of directories to be searched when executing commands. When you run a command the system will search those directories in this order and use the first found executable.
+        - LANG - The current locales settings.
+        - TERM - The current terminal emulation.
+        - MAIL - Location of where the current user’s mail is stored.
+    - When you launch an app from a shell, the app inherits much of the shell’s environment, including exported environment variables. This form of inheritance can be a useful way to configure the app dynamically
+    - Although child processes of a shell inherit the environment of that shell, shells are separate execution contexts that don’t share environment information with each other. Variables you set in one Terminal window aren’t set in other Terminal windows.
+    - Permanent environment variables: After you close a Terminal window, variables you set in that window are no longer available. If you want the value of a variable to persist across sessions and in all Terminal windows, you must set it in a shell startup script. For information about modifying your zsh shell startup script to keep variables and other settings across multiple sessions, see the “Invocation” section of the zsh man page.
+    
+    - How does the shell load the enviorenment variables:  
+    - /etc/profile is sourced by login shells
+    - Then, the first available of ~/.bash_profile, ~/.bash_login, and ~/.profile is sourced.
+    
 ## glossory
 
 ### Files
