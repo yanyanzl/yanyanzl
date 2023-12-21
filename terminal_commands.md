@@ -243,8 +243,8 @@ Enter “Y” to save the modified buffer.
     - Permanent environment variables: After you close a Terminal window, variables you set in that window are no longer available. If you want the value of a variable to persist across sessions and in all Terminal windows, you must set it in a shell startup script. For information about modifying your zsh shell startup script to keep variables and other settings across multiple sessions, see the “Invocation” section of the zsh man page.
     
     - How does the shell load the enviorenment variables:  
-    - /etc/profile is sourced by login shells
-    - Then, the first available of ~/.bash_profile, ~/.bash_login, and ~/.profile is sourced.
+        - /etc/profile is sourced by login shells
+        - Then, the first available of ~/.bash_profile, ~/.bash_login, and ~/.profile is sourced.
     
 ## glossory
 

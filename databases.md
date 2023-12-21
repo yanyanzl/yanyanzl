@@ -129,6 +129,9 @@ WHERE NOT EXISTS (
     - delete from aiinvest_assetdata
     
     - DROP TABLE author;
+    
+    - The following command can be used to create an index on the id column,in table test1 :
+        - CREATE INDEX test1_id_index ON test1 (id);
     ```
 
 
