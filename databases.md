@@ -154,6 +154,53 @@ WHERE NOT EXISTS (
     - https://aws.amazon.com/blogs/database/managing-postgresql-users-and-roles/#:~:text=Users%2C%20groups%2C%20and%20roles%20are,for%20the%20CREATE%20ROLE%20statement.
 
 
+### postgreSQL in Python
+- pip install psycopg2
+
+- In psycopg, the connection class is responsible for handling transactions. When you issue the first SQL statement to the PostgreSQL database using a cursor object, psycopg creates a new transaction.
+
+    - From that moment, psycopg executes all the subsequent statements in the same transaction. If any statement fails, psycopg will abort the transaction.
+
+    - The connection class has two methods for ending a transaction: commit() and rollback(). If you want to commit all changes to the PostgreSQL database permanently, you call the commit() method. And in case you want to cancel the changes, you call the rollback() method. Closing the connection object or destroying it using the  del will also result in an implicit rollback.
+    
+    - It is important to notice that a simple SELECT statement will start a transaction that may result in undesirable effects such as table bloat and locks. Therefore, if you are developing a long-living application, you should call the commit() or rollback() method before leaving the connection unused for a long time.
+    
+    - Alternatively, you can set the autocommit attribute of the connection object to True. This ensures that psycopg executes every statement and commits it immediately.
+    
+    - The autocommit mode is also useful when you execute statements required to execute outside a transaction such as CREATE DATABASE  and VACUUM.
+    
+    - The following shows a typical pattern for handling a transaction in psycopg:
+        
+        ``` Python
+        import psycopg2
+
+        conn = None
+        try:
+            conn = psycopg2.connect(dsn)
+            cur = conn.cursor()
+            # execute 1st statement
+            cur.execute(statement_1)
+            # execute 2nd statement
+            cur.execute(statement_1)
+            # commit the transaction
+            conn.commit()
+            # close the database communication
+            cur.close()
+        except psycopg2.DatabaseError as error:
+            print(error)
+        finally:
+            if conn is not None:
+                conn.close()
+        
+        ``` 
+
+
+
+
+
+
+
+
 
 
     
