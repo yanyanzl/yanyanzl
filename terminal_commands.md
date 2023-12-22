@@ -245,7 +245,15 @@ Enter “Y” to save the modified buffer.
     - How does the shell load the enviorenment variables:  
         - /etc/profile is sourced by login shells
         - Then, the first available of ~/.bash_profile, ~/.bash_login, and ~/.profile is sourced.
-    
+
+29. Since zsh became the default shell in macOS Catalina, run the following commands to add VS Code to your path:
+    ```sh
+    cat << EOF >> ~/.zprofile
+    # Add Visual Studio Code (code)
+    export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+    EOF
+    ```
+
 ## glossory
 
 ### Files

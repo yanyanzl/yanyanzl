@@ -10,6 +10,16 @@
     - x = b"Hello"   Bytes
     - x = bytearray(5)    Bytes Array
 
+
+### Using Requirement Files
+- A requirements file is a list of all of a project’s dependencies. This includes the dependencies needed by the dependencies. It also contains the specific version of each dependency, specified with a double equals sign (==).
+
+    - pip freeze will list the current projects dependencies to stdout.
+    - This shell command will export this as a file named requirements.txt:
+        - pip freeze > requirements.txt
+
+    - Once you’ve got your requirements file, you can head over to a different computer or new virtual environment and run the following:
+        - pip install -r requirements.txt
 ### arguments
     - By default, arguments may be passed to a Python function either by position or explicitly by keyword.
 
