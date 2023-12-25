@@ -57,12 +57,14 @@
     - \du : list all users/roles
     - \dt : list all tables
     - \l : list all database 
-    - \n : list all schema
+    - \dn : list all schema
     - \conninfo : current connection information : equal to sql: select current_user;
     - \c new_database_name : change to the new database;
     - \c current_db new_user_name : change to new user;
     - \c new_db_name new_user_name : change to new db and new user;
     - \password username   : change the password for username;
+    - select CURRENT_SCHEMA;  to get the current schema
+    - select CURRENT_SCHEMAS(TRUE);  to get all the current path's schemas
     
     - Create User:
         - CREATE USER myuser WITH PASSWORD 'secret_passwd';
@@ -98,7 +100,13 @@
         - GRANT USAGE ON ALL SEQUENCES IN SCHEMA myschema TO readwrite;
         - ALTER DEFAULT PRIVILEGES IN SCHEMA myschema GRANT USAGE ON SEQUENCES TO readwrite;
 
-    
+### select a schema when using psql/connection;
+- In PostgreSQL the system determines which table is meant by following a search path, which is a list of schemas to look in.
+- The first matching table in the search path is taken to be the one wanted, otherwise, if there is no match a error is raised, even if matching table names exist in other schemas in the database.
+    - To show the current search path you can use the following command:
+        - SHOW search_path;
+        - SET search_path TO myschema;
+        - SET search_path TO myschema, public; 
     
     
 ### common sql command:

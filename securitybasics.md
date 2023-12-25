@@ -53,6 +53,18 @@
 - To disconnect from the server and close the SSH connection, simply type "exit" and press the Enter key
 
 
+### Copying files from server to local computer using SSH
+1. If your local OS is Unix-like, then try:
+    - scp username@remoteHost:/remote/dir/file.txt /local/dir/
+
+2. If your local OS is Windows ,then you should use pscp.exe utility.:
+    - pscp.exe username@remoteHost:/remote/dir/file.txt d:\
+    
+### coping files by sftp server client model
+- SFTP, which stands for SSH File Transfer Protocol, or Secure File Transfer Protocol, is a protocol packaged with SSH that is a popular method of secure file transfer between two remote systems.    
+
+
+
 ### SSH tunneling
 - SSH tunneling enables more interesting types of use cases. The three types of SSH tunnels are as follows:
 

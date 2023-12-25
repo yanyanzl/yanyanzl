@@ -20,6 +20,23 @@
 
     - Once you’ve got your requirements file, you can head over to a different computer or new virtual environment and run the following:
         - pip install -r requirements.txt
+        
+### Defining Clean-up Actions
+- finally: The try statement has another optional clause which is intended to define clean-up actions that must be executed under all circumstances.        
+    - If a finally clause is present, the finally clause will execute as the last task before the try statement completes. The finally clause runs whether or not the try statement produces an exception. 
+    - If the finally clause executes a break, continue or return statement, exceptions are not re-raised.
+    - If the try statement reaches a break, continue or return statement, the finally clause will execute just prior to the break, continue or return statement’s execution.
+    - If a finally clause includes a return statement, the returned value will be the one from the finally clause’s return statement, not the value from the try clause’s return statement.
+
+- Predefined Clean-up Actions
+    - The with statement allows objects like files to be used in a way that ensures they are always cleaned up promptly and correctly.
+        ``` Python
+        with open("myfile.txt") as f:
+            for line in f:
+                print(line, end="")
+        ```
+    - After the statement is executed, the file f is always closed, even if a problem was encountered while processing the lines. Objects which, like files, provide predefined clean-up actions will indicate this in their documentation.
+    
 ### arguments
     - By default, arguments may be passed to a Python function either by position or explicitly by keyword.
 
