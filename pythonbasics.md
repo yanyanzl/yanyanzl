@@ -36,7 +36,30 @@
                 print(line, end="")
         ```
     - After the statement is executed, the file f is always closed, even if a problem was encountered while processing the lines. Objects which, like files, provide predefined clean-up actions will indicate this in their documentation.
-    
+
+### Return Values
+- The examples thus far have omitted examples of how to annotate the type of a function’s return value. This is done like so:
+    - def sum() -> expression:
+    ...
+
+- The function below takes and returns a string and is annotated as follows:
+    - def greeting(name: str) -> str:
+            return 'Hello ' + name
+            
+### Types
+- A type alias is defined using the type statement, which creates an instance of TypeAliasType. In this example, Vector and list[float] will be treated equivalently by static type checkers:
+        ``` Python
+        type Vector = list[float]
+
+        def scale(scalar: float, vector: Vector) -> Vector:
+            return [scalar * num for num in vector]
+        
+        # passes type checking; a list of floats qualifies as a Vector.
+        new_vector = scale(2.0, [1.0, -4.2, 5.4])
+        ```
+### callback
+- A subroutine function which is passed as an argument to be executed at some point in the future.
+
 ### arguments
     - By default, arguments may be passed to a Python function either by position or explicitly by keyword.
 
