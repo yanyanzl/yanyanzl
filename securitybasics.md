@@ -62,7 +62,8 @@
     
 ### coping files by sftp server client model
 - SFTP, which stands for SSH File Transfer Protocol, or Secure File Transfer Protocol, is a protocol packaged with SSH that is a popular method of secure file transfer between two remote systems.    
-
+    1. opening system preferences, selecting sharing, and then making sure the Remote Login box is checked.
+    2. Next, make sure that Remote Login is enabled.With remote login enabled, the SFTP server on your Mac is enabled and you should be able to connect to your Mac with SFTP
 
 
 ### SSH tunneling
