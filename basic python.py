@@ -91,3 +91,82 @@ print(f"max of array is {largest}")
 array = sorted(array)
 print(f"array sorted as {array}")
 
+"""
+Linked to, but not explicitly mentioned here, 
+is exactly when __all__ is used. It is a list of strings 
+defining what symbols in a module will be exported 
+when from <module> import * is used on the module.
+
+For example, the following code in a foo.py explicitly 
+exports the symbols bar and baz:
+NOTE: __all__ affects the from <module> import * behavior only. 
+Members that are not mentioned in __all__ are still accessible 
+from outside the module and can be imported with 
+from <module> import <member>.
+
+"""
+
+__all__ = ['bar', 'baz']
+
+waz = 5
+bar = 10
+def baz(): return 'baz'
+
+"""
+Single Underscore
+In a class, names with a leading underscore indicate to other programmers 
+that the attribute or method is intended to be be used inside that class. 
+However, privacy is not enforced in any way. Using leading underscores for 
+functions in a module indicates it should not be imported from somewhere else.
+
+_single_leading_underscore: weak "internal use" indicator. 
+E.g. from M import * does not import objects whose name starts with an 
+underscore.
+
+
+
+Double Underscore (Name Mangling)
+
+From the Python docs:
+
+Any identifier of the form __spam (at least two leading underscores, 
+at most one trailing underscore) is textually replaced with _classname__spam,
+ where classname is the current class name with leading underscore(s) stripped.
+   This mangling is done without regard to the syntactic position of the 
+   identifier, so it can be used to define class-private instance and class 
+   variables, methods, variables stored in globals, and even variables 
+   stored in instances. private to this class on instances of other classes.
+
+"""
+
+
+class MyClass():
+    def __init__(self):
+        self.__superprivate = "Hello"
+        self._semiprivate = ", world!"
+
+
+mc = MyClass()
+""" 
+>>> print mc.__superprivate
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: myClass instance has no attribute '__superprivate'
+"""
+
+print(mc._semiprivate)
+# , world!
+print(mc.__dict__)
+# {'_MyClass__superprivate': 'Hello', '_semiprivate': ', world!'}
+
+
+"""
+__future__ — Future statement definitions
+Imports of the form from __future__ import feature are 
+called future statements. These are special-cased by the 
+Python compiler to allow the use of new Python features in 
+modules containing the future statement before the release in 
+which the feature becomes standard.
+
+
+"""
